@@ -116,4 +116,4 @@ CLIENT_URL=http://localhost:5173
 - DELETE `/api/v1/admin/users/:id`
 
 ## 👩‍💻 Developer
-Built by **VidyaSree Sativada** — RGUKT IIIT Srikakulam
+Built by **VidyaSree Sativada** — RGUKT Srikakulam
