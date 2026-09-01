@@ -9,9 +9,23 @@ dotenv.config();
 connectDB();
 
 const app = express();
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://grievance-portal-five-silk.vercel.app'
+];
+
 
 app.use(helmet());
-app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
+}));
 app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 100 }));
 app.use(express.json({ limit: '10kb' }));
 
